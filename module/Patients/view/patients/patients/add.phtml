@@ -1,0 +1,44 @@
+<?php 
+$title = 'Adaugă pacient';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url('patients', array('action' => 'add')));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+echo $this->formHidden($form->get('pat_id'));
+echo "<div class=\"form-group\"";
+echo $this->formLabel($form->get('pat_lastname'));
+echo $this->formInput($form->get('pat_lastname'));
+echo $this->formElementErrors($form->get('pat_lastname'));
+echo "</div>";
+echo "<div class=\"form-group\"";
+echo $this->formLabel($form->get('pat_firstname'));
+echo $this->formInput($form->get('pat_firstname'));
+echo $this->formElementErrors($form->get('pat_firstname'));
+echo "</div>";
+echo "<div class=\"form-group\"";
+echo $this->formLabel($form->get('pat_pnc'));
+echo $this->formInput($form->get('pat_pnc'));
+echo $this->formElementErrors($form->get('pat_pnc'));
+echo "</div>";
+echo "<div class=\"form-group\"";
+echo $this->formLabel($form->get('pat_address'));
+echo $this->formInput($form->get('pat_address'));
+echo $this->formElementErrors($form->get('pat_address'));
+echo "</div>";
+echo "<div class=\"form-group\"";
+echo $this->formLabel($form->get('pat_age'));
+echo $this->formInput($form->get('pat_age'));
+echo $this->formElementErrors($form->get('pat_age'));
+echo "</div>";
+echo "<div class=\"form-group\"";
+echo $this->formLabel($form->get('pat_zone'));
+echo $this->formInput($form->get('pat_zone'));
+echo $this->formElementErrors($form->get('pat_zone'));
+echo "</div>";
+echo $this->formSubmit($form->get('submit'));
+echo $this->form()->closeTag();

@@ -1,0 +1,22 @@
+<?php
+$title = 'Șterge procedură';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<p>Ești sigur că vrei să ștergi
+    '<?php echo $this->escapeHtml($procedures->pro_procedure_name); ?>'?
+</p>
+<?php
+$url = $this->url('procedures', array(
+    'action' => 'delete',
+    'id'     => $this->id,
+));
+?>
+<form action="<?php echo $url; ?>" method="post">
+<div>
+    <input type="hidden" name="pro_id" value="<?php echo (int) $procedures->pro_id; ?>" />
+    <input type="submit" name="del" value="Da" class="btn btn-default" />
+    <input type="submit" name="del" value="Nu" class="btn btn-default" />
+</div>
+</form>

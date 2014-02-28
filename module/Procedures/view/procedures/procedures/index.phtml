@@ -1,0 +1,43 @@
+<?php
+$title = 'Proceduri';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p>
+    <a href="<?php echo $this->url('procedures', array('action'=>'add'));?>">Adaugă procedură</a>
+</p>
+
+<table class="table table-striped">
+<tr>
+	<th>Id</th>
+    <th>Nume procedură</th>
+    <th>Durata normală</th>
+    <th>Prioritate</th>
+    <th>Nr. pacieți/procedură</th>
+    <th>&nbsp;</th>
+</tr>
+<?php foreach ($this->paginator as $procedure) : ?>
+<tr>
+	<td><?php echo $this->escapeHtml($procedure->pro_id);?></td>
+    <td><?php echo $this->escapeHtml($procedure->pro_procedure_name);?></td>
+    <td><?php echo $this->escapeHtml($procedure->pro_normal_duration);?></td>
+    <td><?php echo $this->escapeHtml($procedure->pro_priority);?></td>
+    <td><?php echo $this->escapeHtml($procedure->pro_pat_number);?></td>
+    <td>
+        <a href="<?php echo $this->url('procedures',
+            array('action'=>'edit', 'id' => $procedure->pro_id));?>">Editează</a>
+        <a href="<?php echo $this->url('procedures',
+            array('action'=>'delete', 'id' => $procedure->pro_id));?>">Șterge</a>
+    </td>
+</tr>
+<?php endforeach; ?>
+</table>
+<?php 
+echo $this->paginationControl(
+     $this->paginator,
+     'sliding',
+     array('partial/paginator.phtml', 'Procedures'),
+     array(
+         'route' => 'procedures'
+     )
+ );

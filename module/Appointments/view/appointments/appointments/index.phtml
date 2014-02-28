@@ -1,0 +1,21 @@
+<a href="<?php echo $this->url('appointments'); ?>add">Adaugă programare</a><br />
+<div id="container_div" interval="<?php echo $interval; ?>" procedures="<?php echo $procedures; ?>" appointments="<?php echo $appointments; ?>" homeurl="<?php echo $this->url('appointments'); ?>" tabDates="<?php echo $tabDates; ?>" class="container"></div>
+
+<!-- Add form modal -->
+<?php
+$title = 'Adaugă programare';
+$this->headTitle($title);
+?>
+<div id="modaladd" class="modal fade">
+  <div class="modal-dialog">
+  <div class="modal-content">   
+  <div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	<h3><?php echo $this->escapeHtml($title); ?></h3>
+  </div>
+  <div class="modal-body">
+  </div>
+</div>
+</div>
+</div>
+<!-- End add form modal -->

@@ -1,0 +1,23 @@
+<?php
+
+$title = 'Șterge programare';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<p>Ești sigur că vrei să ștergi programarea 
+    <?php echo $this->escapeHtml($appointments->detalii); ?>?
+</p>
+<?php
+$url = $this->url('appointments', array(
+    'action' => 'delete',
+    'id'     => $this->id,
+));
+?>
+<form action="<?php echo $url; ?>" method="post">
+<div>
+    <input type="hidden" name="app_id" value="<?php echo (int) $appointments->app_id; ?>" />
+    <input type="submit" name="del" value="Da" class="btn btn-default" />
+    <input type="submit" name="del" value="Nu" class="btn btn-default" />
+</div>
+</form>

@@ -1,0 +1,48 @@
+<?php 
+$title = 'Pacienți';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<p>
+    <a href="<?php echo $this->url('patients', array('action'=>'add'));?>">Adaugă pacient</a>
+</p>
+
+<table class="table table-striped">
+<tr>
+	<th>Id</th>
+    <th>Nume</th>
+    <th>Prenume</th>
+    <th>CNP</th>
+    <th>Adresă</th>
+    <th>Vârstă</th>
+    <th>Zonă</th>
+    <th>&nbsp;</th>
+</tr>
+<?php foreach ($this->paginator as $patient) : ?>
+<tr>
+	<td><?php echo $this->escapeHtml($patient->pat_id);?></td>
+    <td><?php echo $this->escapeHtml($patient->pat_lastname);?></td>
+    <td><?php echo $this->escapeHtml($patient->pat_firstname);?></td>
+    <td><?php echo $this->escapeHtml($patient->pat_pnc);?></td>
+    <td><?php echo $this->escapeHtml($patient->pat_address);?></td>
+    <td><?php echo $this->escapeHtml($patient->pat_age);?></td>
+    <td><?php echo $this->escapeHtml($patient->pat_zone);?></td>
+    <td>
+        <a href="<?php echo $this->url('patients',
+            array('action'=>'edit', 'id' => $patient->pat_id));?>">Editează</a>
+        <a href="<?php echo $this->url('patients',
+            array('action'=>'delete', 'id' => $patient->pat_id));?>">Șterge</a>
+    </td>
+</tr>
+<?php endforeach; ?>
+</table>
+<?php
+ echo $this->paginationControl(
+     $this->paginator,
+     'sliding',
+     array('partial/paginator.phtml', 'Patients'),
+     array(
+         'route' => 'patients'
+     )
+ );
+ ?>

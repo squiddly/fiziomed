@@ -1,0 +1,47 @@
+<?php
+
+$title = 'Editează programare';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+
+<?php
+$form = $this->form;
+$form->setAttribute('action', $this->url(
+    'appointments',
+    array(
+        'action' => 'edit',
+        'id'     => $this->id,
+    )
+));
+$form->prepare();
+
+echo $this->form()->openTag($form);
+echo $this->formHidden($form->get('app_id'));
+echo "<div class=\"form-group\"";
+echo $this->formLabel($form->get('app_pro_id'));
+echo $this->formInput($form->get('app_pro_id'));
+echo $this->formElementErrors($form->get('app_pro_id'));
+echo "</div>";
+echo "<div class=\"form-group\"";
+echo $this->formLabel($form->get('app_pat_id'));
+echo $this->formInput($form->get('app_pat_id'));
+echo $this->formElementErrors($form->get('app_pat_id'));
+echo "</div>";
+echo "<div class=\"form-group\"";
+echo $this->formLabel($form->get('app_start_date'));
+echo $this->formInput($form->get('app_start_date'));
+echo $this->formElementErrors($form->get('app_start_date'));
+echo "</div>";
+echo "<div class=\"form-group\"";
+echo $this->formLabel($form->get('app_pro_pat_number'));
+echo $this->formInput($form->get('app_pro_pat_number'));
+echo $this->formElementErrors($form->get('app_pro_pat_number'));
+echo "</div>";
+echo "<div class=\"form-group\"";
+echo $this->formLabel($form->get('app_pro_normal_duration'));
+echo $this->formInput($form->get('app_pro_normal_duration'));
+echo $this->formElementErrors($form->get('app_pro_normal_duration'));
+echo "</div>";
+echo $this->formSubmit($form->get('submit'));
+echo $this->form()->closeTag();
