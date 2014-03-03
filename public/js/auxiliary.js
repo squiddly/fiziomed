@@ -17,7 +17,7 @@ function renderHomeLayout(interval, hours)
 	
 	$.each(proceduri, function(index, value){
 		procCount++;
-		htmlString += '<th id="proc_'+index+'">'+value+'</th>';
+		htmlString += '<th id="proc_'+index+'">'+value["pro_procedure_name"]+'</th>';
 	});
 	htmlString += '</thead>';
 	
@@ -74,6 +74,16 @@ function renderHomeLayout(interval, hours)
 			});
 		}
 	*/
+	
+	//get appointments for each day
+	var dayNames = ["today", "yesterday", "dayBeforeYesterday", "tomorrow", "dayAfterTomorrow"];
+	var appointments = [];
+	var AppAux = '{}';
+	$.each(dayNames, function(index, value){
+		if(!$.isEmptyObject($('#container_div'))) AppAux = $('#container_div').html($('#container_div').attr(value + 'App')).text();
+		appointments[value] = $.parseJSON(AppAux);
+	});
+	console.log(appointments['today'],appointments['tomorrow']);
 }
 
 //Fill in default credentials - temporary

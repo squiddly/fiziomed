@@ -12,9 +12,9 @@ class AppointmentsTable
         $this->tableGateway = $tableGateway;
     }
 
-    public function fetchAll()
+    public function fetchAll($where = null)
     {
-        $resultSet = $this->tableGateway->select();
+        $resultSet = $this->tableGateway->select($where = null);
         return $resultSet;
     }
 
